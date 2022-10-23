@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "minecraftttv",
+  "version": "1.0.0",
+  "name": "MinecraftTTV",
+  "description": "A Mod that adds features to Minecraft mainly for streaming purposes",
+  "authors": [
+    "StckOverflw"
+  ],
+  "contact": {
+    "homepage": "https://github.com/StckOverflw/rmvw",
+    "sources": "https://github.com/StckOverflw/rmvw"
+  },
+  "license": "WTFPL",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "net.stckoverflw.minecraftttv.MinecraftTTVMod"
+      }
+    ]
+  },
+  "mixins": [
+    "minecraftttv.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-language-kotlin": ">=1.8.5+kotlin.1.7.20",
+    "minecraft": "1.19.x",
+    "java": ">=17"
+  }
+}
