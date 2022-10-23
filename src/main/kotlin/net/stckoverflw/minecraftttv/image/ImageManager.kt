@@ -7,12 +7,13 @@ import com.mojang.blaze3d.vertex.VertexFormat
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.GameRenderer
 import net.minecraft.resources.ResourceLocation
+import java.util.Collections
 
 object ImageManager {
 
     var grid = Grid(18, 10)
 
-    val images = mutableListOf<Image>()
+    val images: MutableList<Image> = Collections.synchronizedList(mutableListOf<Image>())
 
     fun renderImages(f: Float) {
         val screenWidth = Minecraft.getInstance().window.guiScaledWidth.toDouble()
@@ -22,6 +23,7 @@ object ImageManager {
 
         val tileWidth = screenWidth / x1.toDouble()
         val tileHeight = screenHeight / y1.toDouble()
+
 
         images.forEach { (resourceLocation, position): Image ->
             val x = position.x.toDouble() - 1

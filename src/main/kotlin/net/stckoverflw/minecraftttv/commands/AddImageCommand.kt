@@ -1,9 +1,7 @@
 package net.stckoverflw.minecraftttv.commands
 
 import com.mojang.blaze3d.platform.NativeImage
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import net.minecraft.client.Minecraft
@@ -13,17 +11,15 @@ import net.minecraft.resources.ResourceLocation
 import net.silkmc.silk.commands.clientCommand
 import net.silkmc.silk.commands.sendFailure
 import net.silkmc.silk.core.task.mcCoroutineDispatcher
+import net.stckoverflw.minecraftttv.coroutineScope
 import net.stckoverflw.minecraftttv.image.Image
 import net.stckoverflw.minecraftttv.image.ImageManager
 import java.io.IOException
-import java.lang.Exception
 import java.net.URL
 
 private val line = 'a'..'z'
 
 private val regex = "[^a-z0-9/._\\-]".toRegex()
-
-private val coroutineScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
 fun addImageCommand() = clientCommand("add-image", true) {
     argument<String>("position") { position ->
