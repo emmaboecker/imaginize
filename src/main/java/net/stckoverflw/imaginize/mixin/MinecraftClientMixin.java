@@ -1,8 +1,8 @@
-package net.stckoverflw.minecraftttv.mixin;
+package net.stckoverflw.imaginize.mixin;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.GameConfig;
-import net.stckoverflw.minecraftttv.config.SaveManager;
+import net.stckoverflw.imaginize.config.SaveManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "id": "minecraftttv",
+  "id": "imaginize",
   "version": "1.0.0",
-  "name": "MinecraftTTV",
-  "description": "A Mod that adds features to Minecraft mainly for streaming purposes",
+  "name": "Imaginize (Images in Minecraft)",
+  "description": "A Mod that adds stuff with images to minecraft",
   "authors": [
     "StckOverflw"
   ],
   "contact": {
-    "homepage": "https://github.com/StckOverflw/rmvw",
-    "sources": "https://github.com/StckOverflw/rmvw"
+    "homepage": "https://github.com/StckOverflw/imaginize",
+    "sources": "https://github.com/StckOverflw/imaginize"
   },
   "license": "WTFPL",
   "environment": "*",
@@ -17,12 +17,12 @@
     "client": [
       {
         "adapter": "kotlin",
-        "value": "net.stckoverflw.minecraftttv.MinecraftTTVMod"
+        "value": "net.stckoverflw.imaginize.ImaginizeMod"
       }
     ]
   },
   "mixins": [
-    "minecraftttv.mixins.json"
+    "imaginize.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.9",

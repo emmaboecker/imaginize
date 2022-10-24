@@ -1,4 +1,4 @@
-package net.stckoverflw.minecraftttv.utils
+package net.stckoverflw.imaginize.utils
 
 import com.mojang.blaze3d.platform.NativeImage
 import kotlinx.coroutines.Dispatchers
@@ -7,9 +7,9 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.texture.DynamicTexture
 import net.minecraft.resources.ResourceLocation
 import net.silkmc.silk.core.task.mcCoroutineDispatcher
-import net.stckoverflw.minecraftttv.config.SaveManager
-import net.stckoverflw.minecraftttv.image.Image
-import net.stckoverflw.minecraftttv.image.ImageManager
+import net.stckoverflw.imaginize.config.SaveManager
+import net.stckoverflw.imaginize.image.Image
+import net.stckoverflw.imaginize.image.ImageManager
 import java.io.IOException
 import java.net.URL
 

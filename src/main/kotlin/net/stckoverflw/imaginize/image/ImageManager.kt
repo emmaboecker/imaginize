@@ -1,4 +1,4 @@
-package net.stckoverflw.minecraftttv.image
+package net.stckoverflw.imaginize.image
 
 import com.mojang.blaze3d.systems.RenderSystem
 import com.mojang.blaze3d.vertex.DefaultVertexFormat

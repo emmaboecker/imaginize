@@ -1,4 +1,4 @@
-package net.stckoverflw.minecraftttv.image
+package net.stckoverflw.imaginize.image
 
 import kotlinx.serialization.Serializable
 import net.minecraft.resources.ResourceLocation

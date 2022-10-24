@@ -1,10 +1,10 @@
-package net.stckoverflw.minecraftttv.mixin;
+package net.stckoverflw.imaginize.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiComponent;
-import net.stckoverflw.minecraftttv.MinecraftTTVMod;
-import net.stckoverflw.minecraftttv.image.ImageManager;
+import net.stckoverflw.imaginize.ImaginizeMod;
+import net.stckoverflw.imaginize.image.ImageManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +18,7 @@ public class GuiMixin extends GuiComponent {
             at = @At("HEAD")
     )
     private void renderInjection(PoseStack _poseStack, float f, CallbackInfo ci) {
-        if (MinecraftTTVMod.Companion.getRenderImages()) {
+        if (ImaginizeMod.Companion.getRenderImages()) {
             ImageManager.INSTANCE.renderImages(f);
         }
     }

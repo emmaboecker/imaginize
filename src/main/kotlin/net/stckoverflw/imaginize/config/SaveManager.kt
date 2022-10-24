@@ -1,4 +1,4 @@
-package net.stckoverflw.minecraftttv.config
+package net.stckoverflw.imaginize.config
 
 import com.mojang.blaze3d.platform.NativeImage
 import kotlinx.coroutines.Dispatchers
@@ -9,8 +9,8 @@ import kotlinx.serialization.json.Json
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.texture.DynamicTexture
-import net.stckoverflw.minecraftttv.coroutineScope
-import net.stckoverflw.minecraftttv.image.ImageManager
+import net.stckoverflw.imaginize.coroutineScope
+import net.stckoverflw.imaginize.image.ImageManager
 import java.io.IOException
 import java.net.URL
 import java.nio.file.Path

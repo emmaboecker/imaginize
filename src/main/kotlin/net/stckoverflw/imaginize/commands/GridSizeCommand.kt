@@ -1,10 +1,10 @@
-package net.stckoverflw.minecraftttv.commands
+package net.stckoverflw.imaginize.commands
 
 import net.minecraft.client.Minecraft
 import net.silkmc.silk.commands.clientCommand
-import net.stckoverflw.minecraftttv.config.SaveManager
-import net.stckoverflw.minecraftttv.image.Grid
-import net.stckoverflw.minecraftttv.image.ImageManager
+import net.stckoverflw.imaginize.config.SaveManager
+import net.stckoverflw.imaginize.image.Grid
+import net.stckoverflw.imaginize.image.ImageManager
 
 fun gridSize() = clientCommand("grid-size", true) {
     argument("newSize") { size ->

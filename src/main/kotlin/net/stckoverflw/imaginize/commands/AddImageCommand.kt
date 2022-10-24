@@ -1,14 +1,14 @@
-package net.stckoverflw.minecraftttv.commands
+package net.stckoverflw.imaginize.commands
 
 import kotlinx.coroutines.launch
 import net.minecraft.network.chat.Component
 import net.silkmc.silk.commands.clientCommand
 import net.silkmc.silk.commands.sendFailure
 import net.silkmc.silk.commands.sendSuccess
-import net.stckoverflw.minecraftttv.coroutineScope
-import net.stckoverflw.minecraftttv.image.Image
-import net.stckoverflw.minecraftttv.image.ImageManager
-import net.stckoverflw.minecraftttv.utils.addImage
+import net.stckoverflw.imaginize.coroutineScope
+import net.stckoverflw.imaginize.image.Image
+import net.stckoverflw.imaginize.image.ImageManager
+import net.stckoverflw.imaginize.utils.addImage
 
 private val line = 'a'..'z'
 
