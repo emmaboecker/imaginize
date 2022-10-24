@@ -1,25 +1,16 @@
 package net.stckoverflw.minecraftttv.commands
 
-import com.mojang.blaze3d.platform.NativeImage
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.texture.DynamicTexture
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
 import net.silkmc.silk.commands.clientCommand
 import net.silkmc.silk.commands.sendFailure
-import net.silkmc.silk.core.task.mcCoroutineDispatcher
+import net.silkmc.silk.commands.sendSuccess
 import net.stckoverflw.minecraftttv.coroutineScope
 import net.stckoverflw.minecraftttv.image.Image
 import net.stckoverflw.minecraftttv.image.ImageManager
-import java.io.IOException
-import java.net.URL
+import net.stckoverflw.minecraftttv.utils.addImage
 
 private val line = 'a'..'z'
-
-private val regex = "[^a-z0-9/._\\-]".toRegex()
 
 fun addImageCommand() = clientCommand("add-image", true) {
     argument<String>("position") { position ->
@@ -46,32 +37,11 @@ fun addImageCommand() = clientCommand("add-image", true) {
                     return@runs
                 }
 
-                coroutineScope.launch(Dispatchers.IO) {
-                    val nativeImage = try {
-                        NativeImage.read(URL(linkArgument).openStream())
-                    } catch (_: IOException) {
-                        source.sendFailure(Component.literal("Unsupported Image type"))
-                        return@launch
-                    }
-
-                    val resourceLocation =
-                        ResourceLocation(
-                            "screen-image",
-                            "${linkArgument.replace(regex, "").lowercase()}-${positionArgument.lowercase()}"
-                        )
-
-                    withContext(mcCoroutineDispatcher) {
-                        Minecraft.getInstance().textureManager.register(resourceLocation, DynamicTexture(nativeImage))
-
-                        ImageManager.images.add(
-                            Image(
-                                resourceLocation,
-                                Image.Position(
-                                    positionX.toInt(),
-                                    alphabetNumber
-                                )
-                            )
-                        )
+                coroutineScope.launch {
+                    if (!addImage(linkArgument, Image.Position(positionX.toInt(), alphabetNumber))) {
+                        source.sendFailure(Component.literal("unsupported image type"))
+                    } else {
+                        source.sendSuccess(Component.literal("Image added"))
                     }
                 }
             }

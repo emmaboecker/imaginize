@@ -3,6 +3,7 @@ package net.stckoverflw.minecraftttv.mixin;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiComponent;
+import net.stckoverflw.minecraftttv.MinecraftTTVMod;
 import net.stckoverflw.minecraftttv.image.ImageManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,11 +18,10 @@ public class GuiMixin extends GuiComponent {
             at = @At("HEAD")
     )
     private void renderInjection(PoseStack _poseStack, float f, CallbackInfo ci) {
-        ImageManager.INSTANCE.renderImages(f);
+        if (MinecraftTTVMod.Companion.getRenderImages()) {
+            ImageManager.INSTANCE.renderImages(f);
+        }
     }
-
-
-
 }
 
 

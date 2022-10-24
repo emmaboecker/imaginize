@@ -11,7 +11,7 @@ import java.util.Collections
 
 object ImageManager {
 
-    var grid = Grid(18, 10)
+    var grid = Grid(12, 6)
 
     val images: MutableList<Image> = Collections.synchronizedList(mutableListOf<Image>())
 
@@ -25,7 +25,7 @@ object ImageManager {
         val tileHeight = screenHeight / y1.toDouble()
 
 
-        images.forEach { (resourceLocation, position): Image ->
+        images.forEach { (resourceLocation, _, position): Image ->
             val x = position.x.toDouble() - 1
             val y = position.y.toDouble() - 1
             renderImage(
