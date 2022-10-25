@@ -6,6 +6,7 @@ import kotlinx.coroutines.withContext
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.texture.DynamicTexture
 import net.minecraft.resources.ResourceLocation
+import net.silkmc.silk.core.task.mcClientCoroutineDispatcher
 import net.silkmc.silk.core.task.mcCoroutineDispatcher
 import net.stckoverflw.imaginize.config.SaveManager
 import net.stckoverflw.imaginize.image.Image
@@ -15,15 +16,17 @@ import java.net.URL
 
 private val regex = "[^a-z0-9/._\\-]".toRegex()
 
-suspend fun addImage(link: String, position: Image.Position): Boolean {
+suspend fun addImage(link: String, position: Image.Position, client: Boolean = true): Image? {
     val nativeImage = try {
-        NativeImage.read(
-            withContext(Dispatchers.IO) {
-                URL(link).openStream()
-            }
-        )
+        if (client) {
+            NativeImage.read(
+                withContext(Dispatchers.IO) {
+                    URL(link).openStream()
+                }
+            )
+        } else null
     } catch (_: IOException) {
-        return false
+        return null
     }
 
     val resourceLocation =
@@ -32,18 +35,21 @@ suspend fun addImage(link: String, position: Image.Position): Boolean {
             "${link.replace(regex, "").lowercase()}-${"${position.x}-${position.y}"}"
         )
 
-    withContext(mcCoroutineDispatcher) {
-        Minecraft.getInstance().textureManager.register(resourceLocation, DynamicTexture(nativeImage))
+    val image = Image(
+        resourceLocation,
+        link,
+        position
+    )
 
-        ImageManager.images.add(
-            Image(
-                resourceLocation,
-                link,
-                position
-            )
-        )
+    withContext(if (client) mcClientCoroutineDispatcher else mcCoroutineDispatcher) {
+        if (nativeImage != null) {
+            Minecraft.getInstance()?.textureManager?.register(resourceLocation, DynamicTexture(nativeImage))
+        }
+
+        ImageManager.images.add(image)
 
         SaveManager.saveImagesToFile()
     }
-    return true
+
+    return image
 }

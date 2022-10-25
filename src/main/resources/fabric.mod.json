@@ -19,6 +19,12 @@
         "adapter": "kotlin",
         "value": "net.stckoverflw.imaginize.ImaginizeMod"
       }
+    ],
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "net.stckoverflw.imaginize.ImaginizeMod"
+      }
     ]
   },
   "mixins": [

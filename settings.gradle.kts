@@ -1,4 +1,4 @@
-rootProject.name = "minecraftttv"
+rootProject.name = "imaginize"
 
 pluginManagement {
     repositories {

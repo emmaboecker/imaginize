@@ -16,17 +16,18 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:1.19.2")
+    minecraft("com.mojang", "minecraft", "1.19.2")
     mappings(loom.layered {
         quiltMappings.mappings("org.quiltmc:quilt-mappings:1.19.2+build.21:v2")
         officialMojangMappings()
     })
-    modImplementation("net.fabricmc:fabric-loader:0.14.10")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.64.0+1.19.2")
+    modImplementation("net.fabricmc", "fabric-loader", "0.14.10")
+    modImplementation("net.fabricmc.fabric-api", "fabric-api", "0.64.0+1.19.2")
 
-    modImplementation("net.silkmc:silk-commands:1.9.3")
+    modImplementation("net.silkmc", "silk-core", "1.9.3")
+    modImplementation("net.silkmc", "silk-commands", "1.9.3")
 
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.8.5+kotlin.1.7.20")
+    modImplementation("net.fabricmc", "fabric-language-kotlin", "1.8.5+kotlin.1.7.20")
 
 }
 
@@ -36,7 +37,7 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = "17"
         freeCompilerArgs = freeCompilerArgs + "-Xcontext-receivers" + "-Xskip-prerelease-check"
     }
 }

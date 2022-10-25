@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.texture.DynamicTexture
 import net.stckoverflw.imaginize.coroutineScope
 import net.stckoverflw.imaginize.image.ImageManager
+import net.stckoverflw.imaginize.utils.MOD_ID
 import java.io.IOException
 import java.net.URL
 import java.nio.file.Path
@@ -22,13 +23,15 @@ import kotlin.io.path.writeText
 
 object SaveManager {
 
+    private val regex = "[^a-z0-9_\\-]".toRegex()
+
     private val json = Json {
         prettyPrint = true
     }
 
     private val configPath: Path
         get() {
-            val path = FabricLoader.getInstance().configDir.resolve("screen-images/")
+            val path = FabricLoader.getInstance().configDir.resolve("$MOD_ID/")
             if (!path.exists()) {
                 path.createDirectories()
             }
@@ -36,7 +39,8 @@ object SaveManager {
         }
 
     fun saveImagesToFile() {
-        val file = configPath.resolve("save.json")
+        val cleanFileName = (Minecraft.getInstance().currentServer?.ip ?: "save").replace(regex, "")
+        val file = configPath.resolve("$cleanFileName.json")
 
         if (!file.exists()) {
             file.createFile()
@@ -53,7 +57,8 @@ object SaveManager {
     }
 
     private fun readSavesFromFile(): ImageSave? {
-        val file = configPath.resolve("save.json")
+        val cleanFileName = (Minecraft.getInstance().currentServer?.ip ?: "save").replace(regex, "")
+        val file = configPath.resolve("$cleanFileName.json")
 
         if (!file.exists() || file.readText().isEmpty()) {
             return null

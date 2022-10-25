@@ -1,23 +1,25 @@
 package net.stckoverflw.imaginize.commands
 
-import net.minecraft.client.Minecraft
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.minecraft.network.FriendlyByteBuf
 import net.silkmc.silk.commands.clientCommand
-import net.stckoverflw.imaginize.config.SaveManager
-import net.stckoverflw.imaginize.image.Grid
-import net.stckoverflw.imaginize.image.ImageManager
+import net.stckoverflw.imaginize.packets.PacketChannel
+import net.stckoverflw.imaginize.utils.changeGridSize
 
 fun gridSize() = clientCommand("grid-size", true) {
     argument("newSize") { size ->
         runs {
             val newSize: Int = size()
+            changeGridSize(newSize)
 
-            val screenWidth = Minecraft.getInstance().window.guiScaledWidth.toDouble()
-            val screenHeight = Minecraft.getInstance().window.guiScaledHeight.toDouble()
+            val buf = PacketByteBufs.create()
 
-            val ratio = screenHeight / screenWidth
+            buf.writeInt(newSize)
 
-            ImageManager.grid = Grid(newSize, (ratio * newSize.toDouble()).toInt())
-            SaveManager.saveImagesToFile()
+            ClientPlayNetworking.send(
+                PacketChannel.GridSize, FriendlyByteBuf(buf)
+            )
         }
     }
 }
