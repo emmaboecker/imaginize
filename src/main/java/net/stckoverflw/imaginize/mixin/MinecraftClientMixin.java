@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Minecraft.class)
 public class MinecraftClientMixin {
 
-    @Inject(at = @At("TAIL"), method = "<init>(Lnet/minecraft/client/main/GameConfig;)V")
+    @Inject(at = @At("TAIL"), method = "Lnet/minecraft/client/Minecraft;<init>(Lnet/minecraft/client/main/GameConfig;)V")
     private void init(GameConfig gameConfig, CallbackInfo ci) {
         SaveManager.INSTANCE.loadImagesSave();
     }

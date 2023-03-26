@@ -31,8 +31,8 @@
     "imaginize.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.9",
-    "fabric-language-kotlin": ">=1.8.5+kotlin.1.7.20",
+    "fabricloader": ">=0.14.18",
+    "fabric-language-kotlin": ">=1.9.2+kotlin.1.8.10",
     "minecraft": "1.19.x",
     "java": ">=17"
   }

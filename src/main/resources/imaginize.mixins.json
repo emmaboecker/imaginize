@@ -7,7 +7,6 @@
     "MinecraftServerMixin"
   ],
   "client": [
-    "GameMixin",
     "GuiMixin",
     "MinecraftClientMixin",
     "PauseScreenMixin"

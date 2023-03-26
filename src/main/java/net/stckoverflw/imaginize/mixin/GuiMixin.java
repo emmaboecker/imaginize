@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiMixin extends GuiComponent {
 
     @Inject(
-            method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;F)V",
+            method = "Lnet/minecraft/client/gui/Gui;render(Lcom/mojang/blaze3d/vertex/PoseStack;F)V",
             at = @At("HEAD")
     )
     private void renderInjection(PoseStack _poseStack, float f, CallbackInfo ci) {

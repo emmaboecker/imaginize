@@ -39,8 +39,7 @@ object SaveManager {
         }
 
     fun saveImagesToFile() {
-        val cleanFileName = (Minecraft.getInstance().currentServer?.ip ?: "save").replace(regex, "")
-        val file = configPath.resolve("$cleanFileName.json")
+        val file = configPath.resolve("save.json")
 
         if (!file.exists()) {
             file.createFile()
@@ -57,8 +56,7 @@ object SaveManager {
     }
 
     private fun readSavesFromFile(): ImageSave? {
-        val cleanFileName = (Minecraft.getInstance().currentServer?.ip ?: "save").replace(regex, "")
-        val file = configPath.resolve("$cleanFileName.json")
+        val file = configPath.resolve("save.json")
 
         if (!file.exists() || file.readText().isEmpty()) {
             return null

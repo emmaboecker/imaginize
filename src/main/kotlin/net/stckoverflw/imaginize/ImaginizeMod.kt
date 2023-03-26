@@ -24,6 +24,8 @@ class ImaginizeMod : ModInitializer, ClientModInitializer {
         resetImages()
 
         PacketManager.initializeClientSide()
+
+
     }
 
     override fun onInitialize() {
