@@ -25,7 +25,7 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api", "fabric-api", "0.76.0+1.19.4")
 
     modImplementation("net.silkmc", "silk-core", "1.9.7")
-    modImplementation("net.silkmc", "silk-commands", "1.9.7")
+    modImplementation("net.silkmc", "silk-commands", "1.10.7")
 
     modImplementation("net.fabricmc", "fabric-language-kotlin", "1.9.2+kotlin.1.8.10")
 
